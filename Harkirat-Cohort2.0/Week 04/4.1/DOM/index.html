@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Two</title>
+</head>
+<body>
+    <h1>Input One:</h1>
+    <input type="number" id="one"/>
+    <h1>Input Two:</h1>
+    <input type="number" id="two" /><br>
+
+    <button onclick="sum()">Calculate Sum</button>
+    <p id="sum"></p>
+    <script>
+        
+        function sum(){
+            let num1 = document.getElementById('one').value
+            let num2 = document.getElementById('two').value
+            num1 = Number(num1);
+            num2 = Number(num2);
+            let sum = num1+num2
+            document.getElementById('sum').innerHTML = sum
+        }
+    </script>
+</body>
+</html>
