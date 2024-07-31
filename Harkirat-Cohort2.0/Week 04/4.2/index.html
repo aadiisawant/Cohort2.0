@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input  id="title" type="text" placeholder="Title"><br></br>
+        <input  id="description" type="text" placeholder="description"><br></br>
+        <button id="btn-add" onclick="todo()">Add TODO</button>
+        <br><br>
+        <p id="show"></p>
+    </div>
+
+    <script>
+        function todo(){
+            const title = document.getElementById('title').value
+            const desc = document.getElementById('description').value;
+            console.log(title, desc);
+            document.getElementById('show').innerHTML += title +"<br>" +desc
+        } 
+    </script>
+</body>
+</html>
