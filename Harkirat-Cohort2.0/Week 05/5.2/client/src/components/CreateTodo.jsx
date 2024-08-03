@@ -1,6 +1,6 @@
 import React from 'react'
 import './CreateTodo.css'
-function CreateTodo() {
+function CreateTodo({setTodos}) {
     const handleCreateTodo = async (e)=>{
         e.preventDefault();
         const title = e.target.title.value;
@@ -19,10 +19,12 @@ function CreateTodo() {
         if(!response.ok){
             alert(data.msg)
         }else{
-            alert('Added...')
+            setTodos(prevTodos => [...prevTodos, data])
+            alert('Todo Added...')
         }
-        
+        e.target.reset();
     }
+    
   return (
     <div className='form-container'>
         <form onSubmit={handleCreateTodo}>

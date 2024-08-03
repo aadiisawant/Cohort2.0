@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import UpdateTodo from './UpdateTodo';
 
-function TodoApp() {
-    const [todos, setTodos] = useState([]);
+function TodoApp({todos, setTodos}) {
     const [currentTodo, setCurrentTodo] = useState({});
     const [isEdit, setIsEdit] = useState(false);
 
-    async function fetchTodos(){
+    useEffect(() => {
+      async function fetchTodos(){
         try {
             const response = await fetch('http://localhost:3000/todos/gettodos');
             if (!response.ok) {
@@ -18,9 +18,9 @@ function TodoApp() {
             console.error('Fetch error:', error);
         }
     }
-    useEffect(() => {
       fetchTodos();
-  }, []);
+    }, [setTodos]);
+  
     async function deleteTodo(id){
       try {
         const response = await fetch(`http://localhost:3000/todos/delete/${id}`, {
@@ -29,7 +29,8 @@ function TodoApp() {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }else{
-        fetchTodos()
+        setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+        alert(`Todo updated...`)
         }
     } catch (error) {
         console.error('Fetch error:', error);
@@ -38,20 +39,24 @@ function TodoApp() {
 
   return (
     <div>
-      {/* <button onClick={fetchTodos}>Fetch</button> */}
-      { todos && todos.map((todo) => {
-        return <div key={todo.id}>
+      {todos.length ? (
+        todos.map((todo) => (
+          <div key={todo.id}>
             <h1>{todo.title}</h1>
             <p>{todo.description}</p>
-            <button>{todo.completed ? 'Done' : 'Mark a done'}</button>
-            <button onClick={() => {
-              setCurrentTodo(todo);
-              setIsEdit(true);
-            }}>update</button>
-            <button onClick={()=> deleteTodo(todo.id)}>delete</button>
-        </div>
-      })}
-      { isEdit && <UpdateTodo currentTodo={currentTodo}/>}
+            <button>{todo.completed ? 'Done' : 'Mark as done'}</button>
+            <button onClick={() => { setCurrentTodo(todo); setIsEdit(true); }}>Update</button>
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+          </div>
+        ))
+      ) : (
+        <p>No todos available.</p>
+      )}
+      { isEdit && (<UpdateTodo 
+      currentTodo={currentTodo}
+      setTodos={setTodos}
+      setIsEdit={setIsEdit}
+      />)}
     </div>
   )
 }
