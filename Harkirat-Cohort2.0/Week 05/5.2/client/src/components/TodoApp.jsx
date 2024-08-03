@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import UpdateTodo from './UpdateTodo';
 
 function TodoApp() {
@@ -18,7 +18,9 @@ function TodoApp() {
             console.error('Fetch error:', error);
         }
     }
-
+    useEffect(() => {
+      fetchTodos();
+  }, []);
     async function deleteTodo(id){
       try {
         const response = await fetch(`http://localhost:3000/todos/delete/${id}`, {
@@ -36,7 +38,7 @@ function TodoApp() {
 
   return (
     <div>
-      <button onClick={fetchTodos}>Fetch</button>
+      {/* <button onClick={fetchTodos}>Fetch</button> */}
       { todos && todos.map((todo) => {
         return <div key={todo.id}>
             <h1>{todo.title}</h1>

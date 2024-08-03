@@ -6,11 +6,13 @@ function UpdateTodo({currentTodo}) {
     e.preventDefault();
         const title = e.target.title.value;
         const description = e.target.description.value;
+        // const completed = e.target.completed.value;
         const response = await fetch(`http://localhost:3000/todos/update/${currentTodo.id}`, {
                 method: "PUT",
                 body: JSON.stringify({
                     title: title,
                     description: description,
+                    // completed: completed
                 }),
                 headers:{
                     "Content-type" : "application/json"

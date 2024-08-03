@@ -1,0 +1,39 @@
+.card{
+  background-color : #f9f9f9;
+  padding: 20px;
+  width: 400px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.card p{
+  font-size: large;
+  color: grey;
+}
+.interests{
+  color: grey;
+  list-style-type: none;
+  margin: 0 0 20px 0;
+
+}
+
+.profile-btn{
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.scl-btn{
+  padding: 10px 20px;
+  background-color: #0073b1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  /* margin-left: 10px; */
+  margin-right: 20px;
+  width: 33%;
+}
+.scl-btn:hover {
+  background-color: #005582; /* Darker LinkedIn Blue */
+}
