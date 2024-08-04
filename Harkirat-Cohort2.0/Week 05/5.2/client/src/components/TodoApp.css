@@ -1,0 +1,30 @@
+.show-todos {
+    background-color: rgb(86, 120, 120);
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    margin-top: 50px;
+}
+.crud-btns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.crud-btns button{
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(232, 242, 237);
+    color: black;
+    min-width: 25%;
+}
+
+.todos-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

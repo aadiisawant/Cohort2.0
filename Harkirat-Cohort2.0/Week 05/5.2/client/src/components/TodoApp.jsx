@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import UpdateTodo from './UpdateTodo';
+import './TodoApp.css'
 
 function TodoApp({todos, setTodos}) {
     const [currentTodo, setCurrentTodo] = useState({});
@@ -30,23 +31,47 @@ function TodoApp({todos, setTodos}) {
             throw new Error('Network response was not ok');
         }else{
         setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
-        alert(`Todo updated...`)
+        alert(`Todo deleted...`)
         }
     } catch (error) {
         console.error('Fetch error:', error);
     }
     }
 
+    async function toggleComplete(todo){
+      try{
+      const updatedTodo = {...todo, completed: !todo.completed};
+      const response = await fetch(`http://localhost:3000/todos/update/${todo.id}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(updatedTodo),
+          headers: {
+            "content-type":'application/json',
+          }
+        }
+      )
+      if(!response.ok){
+        throw new Error('Network response was not ok');
+      }else{
+        setTodos(prevTodos => prevTodos.map(t => t.id === todo.id ? updatedTodo: t))
+      }
+    }
+    catch(error){
+      console.error(error)
+    }
+    }
   return (
-    <div>
+    <div className='todos-container'>
       {todos.length ? (
         todos.map((todo) => (
-          <div key={todo.id}>
+          <div key={todo.id} className='show-todos'>
             <h1>{todo.title}</h1>
             <p>{todo.description}</p>
-            <button>{todo.completed ? 'Done' : 'Mark as done'}</button>
+            <div className='crud-btns'>
+            <button onClick={()=> toggleComplete(todo)}>{todo.completed ? 'Done' : 'Mark as done'}</button>
             <button onClick={() => { setCurrentTodo(todo); setIsEdit(true); }}>Update</button>
             <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+            </div>
           </div>
         ))
       ) : (

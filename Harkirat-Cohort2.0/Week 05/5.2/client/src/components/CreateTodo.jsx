@@ -24,7 +24,7 @@ function CreateTodo({setTodos}) {
         }
         e.target.reset();
     }
-    
+
   return (
     <div className='form-container'>
         <form onSubmit={handleCreateTodo}>

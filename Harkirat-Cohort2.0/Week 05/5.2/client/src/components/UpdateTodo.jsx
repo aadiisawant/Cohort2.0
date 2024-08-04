@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './UpdateTodo.css'
 
 function UpdateTodo({currentTodo , setTodos, setIsEdit}) {
-
   const handleUpdate = async(e)=>{
     e.preventDefault();
         const title = e.target.title.value;
         const description = e.target.description.value;
+        const completed = currentTodo.completed;
         const response = await fetch(`http://localhost:3000/todos/update/${currentTodo.id}`, {
                 method: "PUT",
                 body: JSON.stringify({
                     title: title,
                     description: description,
-                    // completed: completed
+                    completed: completed
                 }),
                 headers:{
                     "Content-type" : "application/json"
