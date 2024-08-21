@@ -4,6 +4,7 @@ import axios from 'axios'
 import './App.css'
 import { useEffect } from 'react';
 import FetchTodo from './FetchTodo';
+import UseMemoDemo from './UseMemoDemo';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -18,8 +19,9 @@ function App() {
     <div>
       {/* {todos.map(todo => ( <Todo key={todo.id} title={todo.title} description={todo.description}/>
       ))} */}
-      <h1>Fetch Todo with ID</h1>
-      <FetchTodo />
+      {/* <h1>Fetch Todo with ID</h1>
+      <FetchTodo /> */}
+      <UseMemoDemo />
     </div>
     
   )
