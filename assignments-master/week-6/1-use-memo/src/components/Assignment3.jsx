@@ -20,7 +20,7 @@ export const Assignment3 = () => {
     // Your code ends here
     return (
         <div>
-            <ul>
+            <ul> 
                 {items.map((item, index) => (
                     <li key={index}>{item.name} - Price: ${item.value}</li>
                 ))}
