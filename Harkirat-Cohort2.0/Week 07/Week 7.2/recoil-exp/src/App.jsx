@@ -23,6 +23,7 @@ function Count(){
         <Btns />
     </div>
 }
+
 function EvenRender(){
   let isEven = useRecoilValue(EvenSelector);
   return <div>
@@ -33,8 +34,7 @@ function EvenRender(){
 function RenderCount(){
     let count = useRecoilValue(customCount);
     return <div>
-        {count}
-        
+      {count}
     </div>
 }
 
