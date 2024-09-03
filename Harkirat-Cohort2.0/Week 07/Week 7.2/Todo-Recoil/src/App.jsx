@@ -9,11 +9,16 @@ function App() {
 
   return (
     <>
+    <div>
     <RecoilRoot>
+      <h1>Todo App</h1>
       <TodoCreate />
-      <TodoSearch />
+      <h3>Search Todo</h3>
+      <div><TodoSearch /></div>
+      <h3>Todo List</h3>
       <TodoDisplay />
     </RecoilRoot>
+    </div>
     </>
   )
 }

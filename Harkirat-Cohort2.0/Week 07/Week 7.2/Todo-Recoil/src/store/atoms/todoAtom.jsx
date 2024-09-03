@@ -21,12 +21,12 @@ export const FilterTodos = selector({
     }
 });
 
-export const searchQueryState = selector({
-    key: 'searchQueryState',
-    set: ({set}, newValue)=>{
-        set(searchQueryAtom, newValue);
-    },
-    get: ({get}) => {
-        return get(searchQueryAtom);
-    }
-})
+// export const searchQueryState = selector({
+//     key: 'searchQueryState',
+//     set: ({set}, newValue)=>{
+//         set(searchQueryAtom, newValue);
+//     },
+//     get: ({get}) => {
+//         return get(searchQueryAtom);
+//     }
+// })

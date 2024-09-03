@@ -1,5 +1,5 @@
 import React from 'react'
-import { FilterTodos, todoAtom } from '../store/atoms/todoAtom';
+import { FilterTodos } from '../store/atoms/todoAtom';
 import { useRecoilValue } from 'recoil';
 
 function TodoDisplay() {
