@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  text-align: center;
+}
+h1{
+  text-align: center;
+}
+
+.action{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.action input{
+  margin-right: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.action button{
+  border-radius: 10px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+
+.content{
+  margin-top: 50px;
+  padding: 10px;
+  text-align: center;
+}
